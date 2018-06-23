@@ -4,12 +4,12 @@
   "description": "lightweight recaptcha plugin for vue",
   "main": "recap.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run babel && npm run uglify",
+    "babel": "babel src/recap.js --out-file dist/recap.js",
+    "uglify": "uglifyjs dist/recap.js -c -m -o dist/recap.min.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/blasphemy/vue-recap.git"
-  },
+  "repository": "git+https://github.com/blasphemy/vue-recap.git",
   "keywords": [
     "vue",
     "recaptcha",
@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/blasphemy/vue-recap/issues"
   },
-  "homepage": "https://github.com/blasphemy/vue-recap#readme"
+  "homepage": "https://github.com/blasphemy/vue-recap#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "uglify-js": "^3.4.1"
+  }
 }
