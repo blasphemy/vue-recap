@@ -1,12 +1,12 @@
 const recap = {
-  install: (Vue, Key) => {
-    var o = {
+  install: (Vue, options) => {
+    let o = {
       ready: false,
-      key: '',
+      key: options.Key,
       execute: function (arg) {
-        var self = this
+        let self = this
         return new Promise((resolve, reject) => {
-          var w = function () {
+          let w = function () {
             setTimeout(function () {
               if (!self.ready) {
                 w()
@@ -19,8 +19,8 @@ const recap = {
         })
       }
     }
-    var doWait = () => {
-      setTimeout(() => {
+    let doWait = function () {
+      setTimeout(function () {
         if (typeof window.grecaptcha.execute === 'undefined') {
           doWait()
         } else {
@@ -28,16 +28,19 @@ const recap = {
         }
       }, 100)
     }
-    var insertScript = () => {
-      var script = document.createElement('script')
-      script.src = 'https://www.google.com/recaptcha/api.js?render=' + Key
-      script.async = true
-      script.onload = doWait
-      document.head.appendChild(script)
-      o.key = Key
-      Vue.prototype.$recap = o
+    let init = function () {
+      if (options.autoInject) {
+        let script = document.createElement('script')
+        script.src = 'https://www.google.com/recaptcha/api.js?render=' + options.Key
+        script.async = true
+        script.onload = doWait
+        document.head.appendChild(script)
+        Vue.prototype.$recap = o
+      } else {
+        doWait()
+      }
     }
-    insertScript()
+    init()
   }
 }
 
