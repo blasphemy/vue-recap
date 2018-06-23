@@ -1,0 +1,24 @@
+{
+  "name": "vue-recap",
+  "version": "1.0.0",
+  "description": "lightweight recaptcha plugin for vue",
+  "main": "recap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blasphemy/vue-recap.git"
+  },
+  "keywords": [
+    "vue",
+    "recaptcha",
+    "google"
+  ],
+  "author": "Daniel Leining <daniel@leining.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blasphemy/vue-recap/issues"
+  },
+  "homepage": "https://github.com/blasphemy/vue-recap#readme"
+}
